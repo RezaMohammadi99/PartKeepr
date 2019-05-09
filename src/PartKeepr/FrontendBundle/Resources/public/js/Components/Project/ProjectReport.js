@@ -147,6 +147,22 @@ Ext.define('PartKeepr.ProjectReportView', {
         });
     },
     onProjectReportSave: function () {
+        
+        ///load it right after
+        this.reportResult.getView().mask(i18n("Loading…"));
+        var selection = this.reportList.getSelection();
+
+        if (selection.length === 1)
+        {
+            this.projectReport = PartKeepr.ProjectBundle.Entity.Report.load(
+                selection[0].getId(),
+                {
+                    success: this.onProjectReportLoaded,
+                    scope: this
+                });
+        }
+        
+        
         this.projectReport.load({
             success: this.onProjectReportLoaded,
             scope: this
