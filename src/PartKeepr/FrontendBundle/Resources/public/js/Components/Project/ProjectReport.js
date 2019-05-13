@@ -147,9 +147,15 @@ Ext.define('PartKeepr.ProjectReportView', {
         });
     },
     onProjectReportSave: function () {
+        this.projectReport.load({
+            success: this.onProjectReportLoaded,
+            scope: this
+        });
+
+        this.reportList.getStore().reload();
         
-        ///load it right after
-        this.reportResult.getView().mask(i18n("Loading…"));
+        
+         this.reportResult.getView().mask(i18n("Saved, Loading…"));
         var selection = this.reportList.getSelection();
 
         if (selection.length === 1)
@@ -163,12 +169,6 @@ Ext.define('PartKeepr.ProjectReportView', {
         }
         
         
-        this.projectReport.load({
-            success: this.onProjectReportLoaded,
-            scope: this
-        });
-
-        this.reportList.getStore().reload();
     },
     onProjectReportLoaded: function () {
         this.reportResult.reconfigure(this.projectReport.reportParts());
