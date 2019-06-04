@@ -109,6 +109,23 @@ Ext.define('PartKeepr.ProjectReportView', {
                 }));
         }
 
+        
+        
+        //this.projectReport.reportProjects().add(
+        //    Ext.create("PartKeepr.ProjectBundle.Entity.ReportProject", {
+        //        project: projectsToReport[0].project,
+        //        quantity: 1
+        //    }));
+        
+        //console.log(projectsToReport[0]);
+        //console.log(projectsToReport[0].project);
+        
+        //var project = this.projectReport.reportProjects();
+        //console.log(Object.keys(project.data.items[0]));
+        //console.log(project.data.items[0].data.project);
+        //var parts = project.items[0].getParts();
+        //parts.items[0].setRemarks("this is a modified remark");
+        
         this.doSaveProjectReport();
     },
     /**
@@ -130,7 +147,6 @@ Ext.define('PartKeepr.ProjectReportView', {
         {
             this.reportResult.setProjectsToReport([]);
             this.reportResult.setStore(new Ext.data.Store());
-
             var selection = this.reportList.getSelection();
             if (selection.length === 1)
             {
@@ -153,21 +169,6 @@ Ext.define('PartKeepr.ProjectReportView', {
         });
 
         this.reportList.getStore().reload();
-        
-        
-         this.reportResult.getView().mask(i18n("Saved, Loading…"));
-        var selection = this.reportList.getSelection();
-
-        if (selection.length === 1)
-        {
-            this.projectReport = PartKeepr.ProjectBundle.Entity.Report.load(
-                selection[0].getId(),
-                {
-                    success: this.onProjectReportLoaded,
-                    scope: this
-                });
-        }
-        
         
     },
     onProjectReportLoaded: function () {
