@@ -100,7 +100,7 @@ Ext.define('PartKeepr.Components.Project.MetaPartSubgrid', {
     {
         var missing;
 
-        var i, projectReportItem, subPart, projectPart;
+        var i, projectReportItem, subPart;
 
         for (i = 0; i < record.subParts().getCount(); i++)
         {
@@ -115,31 +115,19 @@ Ext.define('PartKeepr.Components.Project.MetaPartSubgrid', {
                 } else {
                     missing = Math.abs(missing);
                 }
-
                 
-                //subPart.setProductionRemarks("please work");
-                //subPart.set("productionRemarks", "this is a remark");
-                console.log("find the projects in this please");
                 console.log(record);
+                if(subPart.get("comment").indexOf("DO NOT CHANGE") == -1)
+                    subPart.set("comment", subPart.get("comment") + "\nDO NOT CHANGE:" + record.data.report + record._part.data.name);
+                else if(subPart.get("comment").indexOf(record.data.report) != -1)
+                    subPart.set("comment", subPart.get("comment") + record._part.data.name);
+                else 
+                    subPart.set("comment", subPart.get("comment").slice(0,subPart.get("comment").indexOf("DO NOT CHANGE")+14) + record.data.report + record._part.data.name);
                 
                 projectReportItem = Ext.create("PartKeepr.ProjectBundle.Entity.ReportPart");
                 projectReportItem.setPart(subPart);
                 projectReportItem.set("quantity", subPart.get("stockToUse"));
                 projectReportItem.setReport(this.up("#projectReportResult").projectReport);
-
-                projectPart = Ext.create("PartKeepr.ProjectBundle.Entity.ProjectPart");
-                projectPart.setPart(subPart);
-                projectPart.set("remarks", "remark");
-                //console.log(projectPart);
-                
-                //projectReportItem.getSubParts();
-                
-                //console.log(projectReportItem);
-                console.log(record.getReport()._reportProjects.data.items[0]);
-                
-                //console.log(projectReportItem);
-                
-                
                 record.store.add(projectReportItem);
             }
         }
