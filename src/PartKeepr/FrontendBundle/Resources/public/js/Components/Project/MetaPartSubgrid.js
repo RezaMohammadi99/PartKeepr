@@ -86,8 +86,6 @@ Ext.define('PartKeepr.Components.Project.MetaPartSubgrid', {
     {
         var parentRecord = button.up("grid").parentRecord;
         
-        //console.log(parentRecord);
-        
         this.convertMetaPartsToParts(parentRecord);
     },
     /**
@@ -116,7 +114,6 @@ Ext.define('PartKeepr.Components.Project.MetaPartSubgrid', {
                     missing = Math.abs(missing);
                 }
                 
-                console.log(record);
                 if(subPart.get("comment").indexOf("DO NOT CHANGE") == -1)
                     subPart.set("comment", subPart.get("comment") + "\nDO NOT CHANGE:" + record.data.report + record._part.data.name);
                 else if(subPart.get("comment").indexOf(record.data.report) != -1)
