@@ -18,8 +18,6 @@ Ext.define("PartKeepr.Components.ProjectReport.Renderers.RemarksRenderer", {
             for (j = 0; j < project.parts().getCount(); j++)
             {
                 projectPart = project.parts().getAt(j);
-                
-                //console.log(projectPart.getPart()._metaPartParameterCriterias);
                         
                 
                 if (projectPart.getPart().getId() === rec.getPart().getId())
@@ -39,42 +37,6 @@ Ext.define("PartKeepr.Components.ProjectReport.Renderers.RemarksRenderer", {
                             projectPartQuantities.push(project.get("name") + ": " + projectPart.get("remarks"));
                         }
                     }
-                    
-                    
-                    
-                        
-                    /*
-                    
-                    for(k=0;k<projectPart.getPart()._metaPartParameterCriterias.data.items.length; k++)
-                    {
-                        //check name
-                        if( projectPart.getPart()._metaPartParameterCriterias.data.items[k].data.stringValue == rec.getPart().data.name)
-                        {
-                            if (projectPart.get("remarks") !== "" && projectPart.get("remarks") !== null)
-                            {
-                                projectPartQuantities.push(project.get("name") + ": " + projectPart.get("remarks"));
-                            }
-                        }
-                        
-                        //check what type of generic metapart it is (I,R,C)
-                        //go through all the parameters
-                        if(projectPart.getPart().data.name.trim().substring(0,2) == "C-")
-                        {
-                            console.log("capacitors");
-                            
-                        }
-                        if(projectPart.getPart().data.name.trim().substring(0,2) == "R-")
-                        {
-                            console.log("resistors");
-                            
-                        }
-                        if(projectPart.getPart().data.name.trim().substring(0,2) == "I-")
-                        {
-                            console.log("inductors");
-                            
-                        }
-                        
-                    }*/
                     
                 }
                 
