@@ -26,6 +26,9 @@ app/authkey.php
 app/config/parameters.php
 app/config/parameters_setup.php
 
+partkeepr.org_access.log
+partkeepr.org_error.log
+
 /web/bundles/
 /web/images/*
 /web/spritesheets/*
