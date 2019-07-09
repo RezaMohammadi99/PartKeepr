@@ -85,7 +85,7 @@ Ext.define('PartKeepr.Components.Project.MetaPartSubgrid', {
     onApplyMetaPartsClick: function (button)
     {
         var parentRecord = button.up("grid").parentRecord;
-
+ 
         this.convertMetaPartsToParts(parentRecord);
     },
     /**
@@ -113,13 +113,10 @@ Ext.define('PartKeepr.Components.Project.MetaPartSubgrid', {
                 } else {
                     missing = Math.abs(missing);
                 }
-
                 projectReportItem = Ext.create("PartKeepr.ProjectBundle.Entity.ReportPart");
                 projectReportItem.setPart(subPart);
                 projectReportItem.set("quantity", subPart.get("stockToUse"));
                 projectReportItem.setReport(this.up("#projectReportResult").projectReport);
-
-
                 record.store.add(projectReportItem);
             }
         }
