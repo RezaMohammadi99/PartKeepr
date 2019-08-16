@@ -25,6 +25,8 @@ partkeepr.jsfiles
 app/authkey.php
 app/config/parameters.php
 app/config/parameters_setup.php
+app/check.php
+app/SymfonyRequirements.php
 
 /web/bundles/
 /web/images/*
